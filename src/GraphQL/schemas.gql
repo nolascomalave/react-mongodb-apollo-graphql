@@ -7,8 +7,12 @@ type Tecnologia {
     tecnologia: String
 }
 
+input CursoInput {
+    tecnologia: String
+}
+
 # Queries: ------------------------------------------------------------------------------------------------
 type Query {
-    obtenerCursos: [Curso],
+    obtenerCursos(input: CursoInput): [Curso],
     obtenerTecnologias: [Tecnologia]
-}
+}  
