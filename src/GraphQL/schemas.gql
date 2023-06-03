@@ -1,0 +1,14 @@
+# Types: --------------------------------------------------------------------------------------------------
+type Curso {
+    titulo: String
+}
+
+type Tecnologia {
+    tecnologia: String
+}
+
+# Queries: ------------------------------------------------------------------------------------------------
+type Query {
+    obtenerCursos: [Curso],
+    obtenerTecnologias: [Tecnologia]
+}
