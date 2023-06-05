@@ -1,12 +1,17 @@
 import fs from 'fs';
 import path from 'path';
 // import express from 'express';
+import dotenv from 'dotenv';
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from '@apollo/server/standalone';
+import connectDB from './config/db';
 
 // GraphQL Dependecies:
 import resolvers from './GraphQL/resolvers'; // Resolvers:
 const typeDefs = fs.readFileSync(path.join(__dirname, './GraphQL/schemas.gql'), 'utf-8'); // Schemas:
+
+// Starting .env file:
+dotenv.config();
 
 // Servers:
 // const app = express();
@@ -21,7 +26,8 @@ startStandaloneServer(apollo, {
         myContext: 'Examplazo',
     }) */
 })
-    .then(({ url }) => {
+    .then(async ({ url }) => {
+        await connectDB();
         console.log(`🚀  Server ready at: ${url}`);
     });
 
